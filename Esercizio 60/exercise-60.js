@@ -63,5 +63,5 @@ function fetchJobById(id) {
 }
 
 Promise.all([fetchPersonById(1), fetchJobById(3)]).then((results) => console.log(results));
-Promise.all([fetchPersonById(1), fetchJobById(4)]).then((results) => console.log(results));
 
+Promise.all([fetchPersonById(1), fetchJobById(4)]).then((results) => console.log(results));
