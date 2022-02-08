@@ -34,4 +34,32 @@ const jobs = [
   }
 ];
 
-// core here
+function fetchPersonById(id) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const personId =  persons.find(item => item.id === id)
+      
+      if(personId) {
+        resolve(personId);
+      } else {
+        reject(new Error('ID not found!'))
+      }
+    }, 1000);
+  });
+}
+
+function fetchJobById(id) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const jobId =  jobs.find(job => job.id === id)
+      
+      if(jobId) {
+        resolve(jobId);
+      } else {
+        reject(new Error('ID not found!'))
+      }
+    }, 500);
+  });
+}
+
+Promise.any([fetchPersonById(1), fetchJobById(3)]).then((result) => console.log(result));
