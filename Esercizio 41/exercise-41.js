@@ -7,14 +7,16 @@ class BankAccount {
 
   deposit(amount) {
     if(amount < 0) {
-      throw('Negative Amount!') 
+      throw new Error('The amount provided cannot be negative') 
     }
     this.#amount += amount;
   }
 
   withdraw(amount) {
-    if(amount < 0 || amount > this.#amount) {
-      throw('Ladro!')
+    if(amount < 0) {
+      throw new Error('The amount provided cannot be negative')
+    } else if(amount > this.#amount) {
+      throw new Error('You cannot withdraw more than your balance')
     }
     this.#amount -= amount;
   }
