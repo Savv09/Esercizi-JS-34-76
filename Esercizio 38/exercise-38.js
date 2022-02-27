@@ -16,6 +16,14 @@ class BankAccount {
   view() {
     console.log(this.#amount);
   }
+
+  get amount() {
+    return this.#amount;
+  }
+
+  set amount(value) {
+    this.#amount += value;
+  }
 }
 
 class BankAccountVip extends BankAccount {
@@ -24,15 +32,11 @@ class BankAccountVip extends BankAccount {
   }
 
   deposit(amount) {
-    let newAmount = amount;
-
-    if (newAmount >= 1000) {
-      let sum = ((newAmount * 3)/ 100)
-      
-      newAmount += sum
+    if(this.amount >= 1000) {
+      this.amount = amount + (amount * 0.03)
+    } else {
+      this.amount = amount
     }
-
-    super.deposit(newAmount)
   }
 }
 
